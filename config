@@ -1,0 +1,255 @@
+#    (_)|_  /  / ___/___   ___   / _/(_)___ _
+#   / /_/_ <  / /__ / _ \ / _ \ / _// // _ `/
+#  /_//____/  \___/ \___//_//_//_/ /_/ \_, /
+#                                     /___/
+#
+  
+                # Autostart apps
+ 
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+ 
+exec --no-startup-id nitrogen --restore   
+ 
+for_window [class="^.*"] border normal 0
+for_window [class=".*"] title_format " >_ %title "
+for_window [class=".*"] title_format "  <span foreground='$background' background='$primary'> %class </span><b>  %title </b>" 
+ 
+#for_window [class=".*"] border pixel 0 
+for_window [class="^.*"] border pixel 0
+
+
+
+exec_always compton -f --config ~/.config/compton/config
+ 
+exec_always --no-startup-id ~/.config/polybar/launch.sh     
+ 
+bindsym $mod+shift+s exec gnome-screenshot -i -d 3 
+ 
+bindsym $mod+y layout toggle all
+ 
+ bindsym $mod+n exec chromium-browser
+ 
+
+# lock the screen
+bindsym $mod+l exec i3lock-fancy -p
+ 
+
+
+ 
+ 
+  
+# start main stack
+bindsym $mod+b  layout splitv;\
+                       move left;\
+                       resize grow right 10 px or 10 ppt;\
+                       split v;\
+                       layout stacking
+
+
+
+## brightness
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +10% && sleep 0.1 && brightnessctl get
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%- && sleep 0.1 && brightnessctl get
+ 
+## colours
+
+# class                  border    bg        text      indicator   child_border
+client.focused           #65737E  #65737E  #FF5733   #293236     #293236
+client.focused_inactive  #293236 #293236 #FF5733   #293236     #293236
+client.unfocused         #293236 #293236 FF5733    #293236     #293236
+client.urgent            #293236 #293236 #FF5733    #1f2126       #293236
+
+
+
+## change window focus
+
+bindsym $mod+i focus left
+bindsym $mod+Down focus down
+bindsym $mod+u focus up
+bindsym $mod+o focus right 
+ 
+## floating windows
+
+floating_modifier $mod
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+m focus mode_toggle
+
+bindsym $mod+Control+space move position center  
+ 
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+ 
+## font
+
+font pango:m0e24 1
+## gaps
+
+gaps inner 12
+gaps outer  12
+ 
+bindsym $mod+g mode "gaps: [i]nner | [o]uter"
+
+mode "gaps: [i]nner | [o]uter" {
+  bindsym o mode "gaps_outer"
+  bindsym i mode "gaps_inner"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+mode "gaps_inner" {
+  bindsym plus  gaps inner current plus 5
+  bindsym minus gaps inner current minus 5
+  bindsym 0     gaps inner current set 0
+  bindsym r     gaps inner current set 30
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+mode "gaps_outer" {
+  bindsym plus  gaps outer current plus 5
+  bindsym minus gaps outer current minus 5
+  bindsym 0     gaps outer current set 0
+  bindsym r     gaps outer current set 10
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+} 
+ 
+ 
+## kill window
+
+bindsym $mod+Shift+m kill
+ 
+assign [class="(?i)gnome-terminal"] 2
+for_window [class="(?i)gnome-terminal"] focus 
+
+assign [class="(?i)chromium-browser"] 1
+for_window [class="(?i)chromium-browser"] focus 
+ 
+ assign [class="(?i)pcmanfm"] 3
+for_window [class="(?i)pcmanfm"] focus
+ 
+bindsym $mod+f fullscreen toggle
+bindsym $mod+t layout toggle 
+ 
+## media controls
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop  
+ 
+# audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+## mod key
+
+set $mod Mod4
+ 
+## move window to workspace
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+
+## move window to workspace and go to workspace
+
+bindsym $mod+Ctrl+1 move container to workspace 1; workspace 1
+bindsym $mod+Ctrl+2 move container to workspace 2; workspace 2
+bindsym $mod+Ctrl+3 move container to workspace 3; workspace 3
+bindsym $mod+Ctrl+4 move container to workspace 4; workspace 4
+bindsym $mod+Ctrl+5 move container to workspace 5; workspace 5
+bindsym $mod+Ctrl+6 move container to workspace 6; workspace 6
+bindsym $mod+Ctrl+7 move container to workspace 7; workspace 7
+bindsym $mod+Ctrl+8 move container to workspace 8; workspace 8
+bindsym $mod+Ctrl+9 move container to workspace 9; workspace 9
+bindsym $mod+Ctrl+0 move container to workspace 10; workspace 10
+
+
+## move window within workspace
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right 
+ 
+bindsym $mod+Shift+e exec "i3-nagbar -t warning Goobye -B 'Yes, exit i3' 'i3-msg exit'"
+ 
+bindsym $mod+Shift+w reload
+bindsym $mod+Shift+r restart 
+  
+## resize windows
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+  bindsym Up resize grow height
+  bindsym Down resize shrink height
+  bindsym Right resize grow width
+  bindsym Left resize shrink width
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+ 
+## rofi (replacing dmenu)
+
+bindsym $mod+space exec rofi -show drun -theme sidetab.rasi
+bindsym $mod+p exec rofi -show window -theme sidetab .rasi
+bindsym $mod+Return exec gnome-terminal 
+ 
+
+ 
+ 
+## window titles
+
+
+
+
+## window split direction
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+
+## workspace switching settings
+
+workspace_auto_back_and_forth yes
+bindsym $mod+Left workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Right workspace next
+bindsym $mod+Prior workspace prev
+
+## workspace switching
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10 
+ 
+
+
+
+
+
+ 
