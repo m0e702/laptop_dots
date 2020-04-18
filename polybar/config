@@ -47,7 +47,7 @@ fixed-center = true
 
 
 background = #2E3440
-foreground = #E6E6E6
+foreground = #A6B8B6
 border-color = #2E3440
 fg-colour = #FFFFFF
 font-1 = kane890:size=31;7
@@ -60,14 +60,14 @@ modules-left   =    custom1  i3
 modules-center = 
 modules-right  =      volume  time  
 
-border-size = 11
+border-size = 7
 padding-left        = 
 padding-right       = 0
 module-margin-left  = 0
 module-margin-right = 0
 module-margin-center = 0
 
-bottom = true
+bottom = false
 
 [module/network]
 type          = internal/network
@@ -173,7 +173,7 @@ label-mode-foreground = #91929A
 label-mode-background = 
 label-focused = %icon%
 label-focused-background = 
-label-focused-foreground = #E9CA8B 
+label-focused-foreground = #A6B8B6
 label-focused-padding = 3
 label-unfocused = %icon%
 label-unfocused-foreground =  #737C8C
@@ -250,7 +250,7 @@ bar-volume-indicator =
 bar-volume-indicator-foreground = #404645
 bar-volume-fill = █
 
-bar-volume-fill-foreground = #E5C07B
+bar-volume-fill-foreground = #3B4252
 bar-volume-empty = █
 bar-volume-empty-foreground = #5C6370
 
@@ -280,7 +280,7 @@ content-foreground = N#aaC5C9CC
 type = custom/text
 content =  
 content-padding = 0
-content-foreground = #E06C75
+content-foreground = #A6B8B6
 click-left = rofi -show drun 
 click-right = rofi -show drun -theme sidetab.rasi
  
