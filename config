@@ -1,146 +1,255 @@
+#    (_)|_  /  / ___/___   ___   / _/(_)___ _
+#   / /_/_ <  / /__ / _ \ / _ \ / _// // _ `/
+#  /_//____/  \___/ \___//_//_//_/ /_/ \_, /
+#                                     /___/
 #
-corner-radius = 7
-
-rounded-corners-exclude = [
-  #"window_type = 'normal'",
-  "class_g = 'URxvt'",
-  "class_g = 'XTerm'",
-  "class_g = 'Polybar'",
-  "class_g = 'code-oss'",
-  #"class_g = 'TelegramDesktop'",
-  "class_g = 'chromium-browser'",
-  "class_g = 'chromium'",
-];
-
-shadow = true;				# Enabled client-side shadows on windows.
-xinerama-shadow-crop = true;
-shadow-radius = 9;			# The blur radius for shadows. (default 10)
-shadow-offset-x = 0;		# The left offset for shadows. (default -15)
-shadow-offset-y = -1;		# The top offset for shadows. (default -12)
-shadow-opacity = 0.2;
-shadow-exclude = [
-	"! name~=''",				
-# "Unknown" windows, including xfwm4 alt-tab
-	"n:e:Notification",
-	"n:e:Plank",
-	"n:e:Docky",
-	"n:e:Whisker Menu",
-	"g:e:Synapse",
-	"g:e:Kupfer",
-	"g:e:Conky",
-# "n:w:*Firefox*",
-	"n:w:*Chrome*",
-	"class_g ?= 'Dunst'",
-	"class_g ?= 'Cairo-dock'",
-	"class_g ?= 'Xfce4-notifyd'",
-	"class_g ?= 'Xfce4-power-manager'",
-	"class_g ?= 'Xfwm4'",		# For the "new" xfwm4 alt-tab
-	"_GTK_FRAME_EXTENTS@:c",	# GTK+ 3 CSD windows https://github.com/chjj/compton/issues/189
-	"class_g = 'Clementine'",
-	"class_g = 'Electron'",
-	"class_g = 'Leonflix'",
-	"class_g = 'vlc'",
-	"_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'",
-];
-
-# Opacity
-#menu-opacity = 1;
-#inactive-opacity = 1;
-#active-opacity = 0.8;
-#frame-opacity = 1;
-inactive-opacity-override = false;
-#alpha-step = 0.06;
-#inactive-dim = 0.05;
-#nactive-dim-fixed = true;
-blur-background = false;
-#blur-background-frame = true;
-#blur-method = "kawase";
-#blur-strength = 8;
-#blur-kern = "15,15,0.006945,0.013427,0.023455,0.037021,0.052797,0.068035,0.079214,0.083335,0.079214,0.068035,0.052797,0.037021,0.023455,0.013427,0.006945,0.013427,0.025958,0.045346,0.071574,0.102076,0.131535,0.153149,0.161116,0.153149,0.131535,0.102076,0.071574,0.045346,0.025958,0.013427,0.023455,0.045346,0.079214,0.125031,0.178314,0.229777,0.267533,0.281450,0.267533,0.229777,0.178314,0.125031,0.079214,0.045346,0.023455,0.037021,0.071574,0.125031,0.197349,0.281450,0.362678,0.422273,0.444239,0.422273,0.362678,0.281450,0.197349,0.125031,0.071574,0.037021,0.052797,0.102076,0.178314,0.281450,0.401392,0.517236,0.602228,0.633555,0.602228,0.517236,0.401392,0.281450,0.178314,0.102076,0.052797,0.068035,0.131535,0.229777,0.362678,0.517236,0.666513,0.776033,0.816402,0.776033,0.666513,0.517236,0.362678,0.229777,0.131535,0.068035,0.079214,0.153149,0.267533,0.422273,0.602228,0.776033,0.903550,0.950552,0.903550,0.776033,0.602228,0.422273,0.267533,0.153149,0.079214,0.083335,0.161116,0.281450,0.444239,0.633555,0.816402,0.950552,0.950552,0.816402,0.633555,0.444239,0.281450,0.161116,0.083335,0.079214,0.153149,0.267533,0.422273,0.602228,0.776033,0.903550,0.950552,0.903550,0.776033,0.602228,0.422273,0.267533,0.153149,0.079214,0.068035,0.131535,0.229777,0.362678,0.517236,0.666513,0.776033,0.816402,0.776033,0.666513,0.517236,0.362678,0.229777,0.131535,0.068035,0.052797,0.102076,0.178314,0.281450,0.401392,0.517236,0.602228,0.633555,0.602228,0.517236,0.401392,0.281450,0.178314,0.102076,0.052797,0.037021,0.071574,0.125031,0.197349,0.281450,0.362678,0.422273,0.444239,0.422273,0.362678,0.281450,0.197349,0.125031,0.071574,0.037021,0.023455,0.045346,0.079214,0.125031,0.178314,0.229777,0.267533,0.281450,0.267533,0.229777,0.178314,0.125031,0.079214,0.045346,0.023455,0.013427,0.025958,0.045346,0.071574,0.102076,0.131535,0.153149,0.161116,0.153149,0.131535,0.102076,0.071574,0.045346,0.025958,0.013427,0.006945,0.013427,0.023455,0.037021,0.052797,0.068035,0.079214,0.083335,0.079214,0.068035,0.052797,0.037021,0.023455,0.013427,0.006945,"
-#blur-kern = "3x3box";
-#blur-kern = "5,5,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1";
-#blur-background-fixed = true;
-blur-background-exclude = [
-	"window_type = 'dock'",
-	"window_type = 'desktop'",
-	"_GTK_FRAME_EXTENTS@:c",
-];
-focus-exclude = [
-	"class_g = 'Cairo-clock'",
-	"class_g = 'Leonflix'",
-	"class_g = 'vlc'",
-	"class_g = 'mpv'",
-	"class_g = 'polybar'",
-	"class_g = 'Firefox'",
-	"class_g = 'slop'",
-	"_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'",
-];
-# opacity-rule = [ "80:class_g = 'URxvt'" ];
-
-# Fading
-fading = true;
-fade-delta = 6;
-fade-in-step = 0.03;
-fade-out-step = 0.03;
-# no-fading-openclose = true;
-# no-fading-destroyed-argb = true;
-fade-exclude = [
-	"class_g = 'lemonbar'",
-	"class_g = 'polybar'",
-];
-
-# Other
-backend              = "xrender";
-vsync                = false;
-use-damage           = "true";
-glx-copy-from-front  = false;
-glx-no-rebind-pixmap = true;
-glx-no-stencil       = true;
-unredir-if-possible  = true;
-xrender-sync         = false;
-xrender-sync-fence   = false;
-mark-wmwin-focused   = true;
-mark-ovredir-focused = false;
+  
+                # Autostart apps
+ 
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+ 
+exec --no-startup-id nitrogen --restore   
+ 
+for_window [class="^.*"] border normal 0
+for_window [class=".*"] title_format " >_ %title "
+for_window [class=".*"] title_format "  <span foreground='$background' background='$primary'> %class </span><b>  %title </b>" 
+ 
+#for_window [class=".*"] border pixel 0 
+for_window [class="^.*"] border pixel 0
 
 
-#backend="GLX";
-#backend = "xrender";
-#mark-wmwin-focused = true;
-#mark-ovredir-focused = true;
-# use-ewmh-active-win = true;
-detect-rounded-corners = true;
-detect-client-opacity = true;
-refresh-rate = 60;
-# vsync = "none";
-#vsync = "opengl-swc";
-dbe = false;
-# paint-on-overlay = true;
-# sw-opti = true;
-#unredir-if-possible = true;
-# unredir-if-possible-delay = 5000;
-# unredir-if-possible-exclude = [ ];
-detect-transient = true;
-detect-client-leader = true;
-invert-color-include = [ ];
-# resize-damage = 1;
 
-# GLX backend
-#glx-no-stencil = true;
-#glx-copy-from-front = false;
-# glx-use-copysubbuffermesa = true;
-#glx-no-rebind-pixmap = true;
-#glx-swap-method = "exchange";
-# glx-use-gpushader4 = true;
-# xrender-sync = true;
-# xrender-sync-fence = true;
+exec_always compton -f --config ~/.config/compton/config
+ 
+exec_always --no-startup-id ~/.config/polybar/launch.sh     
+ 
+bindsym $mod+shift+s exec gnome-screenshot -i -d 3 
+ 
+bindsym $mod+y layout toggle all
+ 
+ bindsym $mod+n exec chromium-browser
+ 
 
-# Window type settings
-wintypes:
-{
-  tooltip       = { fade = true; shadow = true; opacity = 1; focus = true; };
-  menu          = { shadow = false; };
-  dropdown_menu = { shadow = false; };
-  popup_menu    = { shadow = false; };
-  utility       = { shadow = false; };
+# lock the screen
+bindsym $mod+l exec i3lock-fancy -p
+ 
 
-};
+
+ 
+ 
+  
+# start main stack
+bindsym $mod+b  layout splitv;\
+                       move left;\
+                       resize grow right 10 px or 10 ppt;\
+                       split v;\
+                       layout stacking
+
+
+
+## brightness
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +10% && sleep 0.1 && brightnessctl get
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%- && sleep 0.1 && brightnessctl get
+ 
+## colours
+
+# class                  border    bg        text      indicator   child_border
+client.focused           #65737E  #65737E  #FF5733   #293236     #293236
+client.focused_inactive  #293236 #293236 #FF5733   #293236     #293236
+client.unfocused         #293236 #293236 FF5733    #293236     #293236
+client.urgent            #293236 #293236 #FF5733    #1f2126       #293236
+
+
+
+## change window focus
+
+bindsym $mod+i focus left
+bindsym $mod+Down focus down
+bindsym $mod+u focus up
+bindsym $mod+o focus right 
+ 
+## floating windows
+
+floating_modifier $mod
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+m focus mode_toggle
+
+bindsym $mod+Control+space move position center  
+ 
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+ 
+## font
+
+font pango:m0e24 1
+## gaps
+
+gaps inner 12
+gaps outer  12
+ 
+bindsym $mod+g mode "gaps: [i]nner | [o]uter"
+
+mode "gaps: [i]nner | [o]uter" {
+  bindsym o mode "gaps_outer"
+  bindsym i mode "gaps_inner"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+mode "gaps_inner" {
+  bindsym plus  gaps inner current plus 5
+  bindsym minus gaps inner current minus 5
+  bindsym 0     gaps inner current set 0
+  bindsym r     gaps inner current set 30
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+mode "gaps_outer" {
+  bindsym plus  gaps outer current plus 5
+  bindsym minus gaps outer current minus 5
+  bindsym 0     gaps outer current set 0
+  bindsym r     gaps outer current set 10
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+} 
+ 
+ 
+## kill window
+
+bindsym $mod+Shift+m kill
+ 
+assign [class="(?i)gnome-terminal"] 2
+for_window [class="(?i)gnome-terminal"] focus 
+
+assign [class="(?i)chromium-browser"] 1
+for_window [class="(?i)chromium-browser"] focus 
+ 
+ assign [class="(?i)pcmanfm"] 3
+for_window [class="(?i)pcmanfm"] focus
+ 
+bindsym $mod+f fullscreen toggle
+bindsym $mod+t layout toggle 
+ 
+## media controls
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioStop exec playerctl stop  
+ 
+# audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+## mod key
+
+set $mod Mod4
+ 
+## move window to workspace
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+
+## move window to workspace and go to workspace
+
+bindsym $mod+Ctrl+1 move container to workspace 1; workspace 1
+bindsym $mod+Ctrl+2 move container to workspace 2; workspace 2
+bindsym $mod+Ctrl+3 move container to workspace 3; workspace 3
+bindsym $mod+Ctrl+4 move container to workspace 4; workspace 4
+bindsym $mod+Ctrl+5 move container to workspace 5; workspace 5
+bindsym $mod+Ctrl+6 move container to workspace 6; workspace 6
+bindsym $mod+Ctrl+7 move container to workspace 7; workspace 7
+bindsym $mod+Ctrl+8 move container to workspace 8; workspace 8
+bindsym $mod+Ctrl+9 move container to workspace 9; workspace 9
+bindsym $mod+Ctrl+0 move container to workspace 10; workspace 10
+
+
+## move window within workspace
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right 
+ 
+bindsym $mod+Shift+e exec "i3-nagbar -t warning Goobye -B 'Yes, exit i3' 'i3-msg exit'"
+ 
+bindsym $mod+Shift+w reload
+bindsym $mod+Shift+r restart 
+  
+## resize windows
+
+bindsym $mod+r mode "resize"
+
+mode "resize" {
+  bindsym Up resize grow height
+  bindsym Down resize shrink height
+  bindsym Right resize grow width
+  bindsym Left resize shrink width
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+ 
+## rofi (replacing dmenu)
+
+bindsym $mod+space exec rofi -show drun -theme sidetab.rasi
+bindsym $mod+p exec rofi -show window -theme sidetab .rasi
+bindsym $mod+Return exec gnome-terminal 
+ 
+
+ 
+ 
+## window titles
+
+
+
+
+## window split direction
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+
+## workspace switching settings
+
+workspace_auto_back_and_forth yes
+bindsym $mod+Left workspace next
+bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Right workspace next
+bindsym $mod+Prior workspace prev
+
+## workspace switching
+
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10 
+ 
+
+
+
+
+
+ 
