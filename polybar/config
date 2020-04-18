@@ -1,0 +1,393 @@
+, 
+;             _       _                                   __ _       
+; _ __   ___ | |_   _| |__   __ _ _ __    ___ ___  _ __  / _(_) __ _ 
+;| '_ \ / _ \| | | | | '_ \ / _` | '__|  / __/ _ \| '_ \| |_| |/ _` |
+;| |_) | (_) | | |_| | |_) | (_| | |    | (_| (_) | | | |  _| | (_| |
+;| .__/ \___/|_|\__, |_.__/ \__,_|_|     \___\___/|_| |_|_| |_|\__, |
+;|_|            |___/                                          |___/ 
+
+   
+    
+     
+     
+[colors]
+bg = #8F04AE
+fg = #8F04AE
+
+red = #FFFFFF
+grn = #0D1516
+ylw = #292927
+blu = #292927
+mag = #292927
+cyn = #292927
+wht = #FFFFFF
+bblk = #000000
+
+[global/wm]
+margin-top        = 5
+margin-bottom     = 0
+
+
+
+[bar/main]
+monitor = VGA1 
+monitor-fallback = DP-2
+width    = 100%
+height   = 43
+offset-x = 0
+offset-y = 0 
+line-size = 0
+radius = 0.0  
+ 
+override-redirect = false
+fixed-center = true
+
+
+
+
+
+background = #2E3440
+foreground = #E6E6E6
+border-color = #2E3440
+fg-colour = #FFFFFF
+font-1 = kane890:size=31;7
+font-4 = kane890:size=27;4 
+font-2 = kanem:size=29;6
+font-0 = "Chunky Wally:size=18;5" 
+font-3 = "iosevka custom:style=bold:size=12;5" 
+ 
+modules-left   =    custom1  i3
+modules-center = 
+modules-right  =      volume  time  
+
+border-size = 11
+padding-left        = 
+padding-right       = 0
+module-margin-left  = 0
+module-margin-right = 0
+module-margin-center = 0
+
+bottom = true
+
+[module/network]
+type          = internal/network
+interface     = wlp2s0
+ping-interval = 30
+
+[module/memory]
+type = internal/memory
+interval = 5
+format = "%{F#6D6D6D}%{F-} <label>"
+format-fg-colour = #D7424F
+label = %percentage_used%% 
+format-padding           = 1
+
+
+ 
+[module/time]
+type                     = internal/date
+interval                 = 30
+date                     = %H:%M
+ format-prefix            = 
+format-prefix-foreground = #2A3340
+format-foreground = #3B4252
+format-padding   = 4
+ 
+[module/date]
+type = internal/date
+interval = 30
+label =  %time%
+time =  %A, %d %B %
+format-padding   = 4 
+format-foreground = #81A1C1
+  
+[module/browser]
+type = custom/text
+content = 
+content-padding = 4
+content-foreground = #aaC5C9CC
+click-left = chromium &
+click-right = chromium-web & 
+ 
+[module/spacer]
+type = custom/text
+content = ∣
+content-foreground = #cc414458
+content-padding = 0
+
+ 
+[module/mail]
+type = custom/text
+content = 
+content-padding = 
+content-foreground =  #606060
+click-left = ./launcher.sh
+line-size = 4 
+
+ 
+[module/gmail]
+type = custom/text
+content = 
+content-padding = 0
+content-foreground = #293236
+click-left = xdg-open https://mail.google.com/mail/u/0/#inbox
+ 
+[module/title]
+type = internal/xwindow
+label = ..%title%..
+label-maxlen = 14 
+line-size = 4  
+content-foreground = #BC92F8 
+ 
+[module/ewmh]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = true
+
+
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = true
+strip-wsnumbers = true
+label-mode = %mode%
+label-mode-padding = 3
+label-mode-foreground = #91929A
+label-mode-background = 
+label-focused = %icon%
+label-focused-background = 
+label-focused-foreground = #E9CA8B 
+label-focused-padding = 3
+label-unfocused = %icon%
+label-unfocused-foreground =  #737C8C
+label-unfocused-padding = 3
+label-visible = %icon%
+label-visible-background = #2F3240
+label-visible-padding = ${self.label-focused-padding}
+label-urgent = %icon%
+label-urgent-background = 
+label-urgent-foreground = #f0f8ff
+label-urgent-padding = 3
+format-foreground = #9A1C1F
+format-background = 
+label-focused-underline= #f0f8ff
+
+ws-icon-1 = "1;"
+ws-icon-2 = "2;"
+ws-icon-3 = "3;"
+ws-icon-4 = "4;"
+ws-icon-5 = "5;"
+ws-icon-6 = "6;"
+ws-icon-0 = "7;"
+
+
+[module/weather]
+type = custom/script
+interval = 600
+format = <label>
+format-prefix = 
+format-prefix-foreground = #b82121
+format-foreground = #A9A9A9
+format-background =
+exec = ./openweathermap-detailed.sh
+tail = true  
+format-padding  = 1 
+  
+[module/files]
+type = custom/text
+content = 
+content-padding = 4
+content-foreground = #aaC5C9CC
+click-left = pcmanfm &
+click-right = pcmanfm &
+
+
+
+[module/rmenu]
+type = custom/text
+content = 
+format-margin = 5
+
+content-foreground = #A9A9A9
+click-left = rofi -show drun 
+click-right = rofi -show drun  
+line-size = 4
+[module/volume]
+type = internal/pulseaudio
+
+format-volume-margin = 0
+format-volume-padding = 0
+format-volume-background = #1F1F1F
+format-volume = <ramp-volume> <bar-volume>
+
+format-muted-margin = 0
+format-muted-padding = 0
+format-muted-background = 
+format-muted = <label-muted> <bar-volume>
+
+label-muted = 
+label-muted-foreground = #C7563D
+
+bar-volume-width = 10
+bar-volume-indicator =  
+bar-volume-indicator-foreground = #404645
+bar-volume-fill = █
+
+bar-volume-fill-foreground = #E5C07B
+bar-volume-empty = █
+bar-volume-empty-foreground = #5C6370
+
+ramp-volume-0 =  
+ramp-volume-1 =   
+ramp-volume-2 =   
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+
+
+[module/custom]
+type = custom/text
+content = 
+content-padding = 0
+content-background = #0C121B
+content-foreground = #606060
+
+[module/firefox]
+type = custom/text
+content = 
+content-padding = 4
+content-foreground = N#aaC5C9CC
+
+[module/custom1]
+type = custom/text
+content =  
+content-padding = 0
+content-foreground = #E06C75
+click-left = rofi -show drun 
+click-right = rofi -show drun -theme sidetab.rasi
+ 
+[module/essid]
+inherit = module/network
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+
+format-connected-prefix     = ""
+format-disconnected-prefix  = ""
+
+format-connected-background = #1F1F1F
+format-disconnected-background = ${colors.cyn}
+format-connected-foreground = #6D6D6D
+format-disconnected-foreground = #FFFFFF
+label-connected             = " online"
+label-disconnected          = " disconnected"
+
+format-connected-padding     = 2
+format-disconnected-padding  = 2
+; format-connected-prefix-foreground     = ${colors.cyn}
+; format-disconnected-prefix-foreground  = ${colors.cyn}
+
+[module/battery]
+type          = internal/battery
+full-at       = 98
+battery       = BAT1
+adapter       = AC0
+poll-interval = 5
+
+format-charging-prefix      = ""
+format-discharging-prefix   = ""
+format-full-prefix          = ""
+
+label-charging      = " %percentage%% "
+label-discharging   = " %percentage%% "
+label-full          = " %percentage%% "
+
+format-charging-padding = 1
+format-discharging-padding = 3
+format-full-padding    = 1
+
+format-charging-background      = #1F1F1F
+format-discharging-background   = #1F1F1F
+format-full-background          = #1F1F1F
+format-charging-foreground      = #6D6D6D
+format-discharging-foreground   = #FFFFFF
+format-full-foreground          = #4cbdfc
+
+format-charging-prefix-foreground = #a2a1c7
+ format-discharging-prefix-foreground = #064E71
+; format-full-prefix-foreground    = ${colors.red
+
+[module/bell]
+type = custom/text
+content = 
+content-padding = 0
+content-foreground = #606060
+format-prefix-foreground = 
+click-left = ./launcher.sh
+click-right = rofi -show drun   
+ 
+[module/wlan]
+type = custom/text
+
+interface = wlp2s0
+
+interval = 5
+
+label-connected = 
+label-disconnected =  Not Connected 
+content-foreground = #A3BE8C
+content-padding = 1
+
+
+bar-load-width = 5
+bar-load-foreground-0 = #263938
+bar-load-foreground-1 = #263938
+bar-load-foreground-2 = #263938
+bar-load-foreground-3 = #263938
+bar-load-indicator = ▉
+bar-load-indicator-font = 0
+bar-load-indicator-foreground = #263938
+bar-load-fill = ▉
+bar-load-fill-font = 0
+bar-load-empty = ▉
+bar-load-empty-font = 0
+bar-load-empty-foreground = #99586e75
+
+ 
+[module/term]
+type = custom/text
+content = 60
+content-padding = 1
+content-foreground = #BF616A
+click-left = pamac
+click-right = gnome-terminal  
+ 
+[module/power]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = #262B36
+click-left = pamac
+click-right = ./powermenu.sh
+
+
+ 
+
