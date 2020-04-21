@@ -8,9 +8,11 @@
  */
 
 configuration {
-    font:                           "power000 80";
+    font:                           "Noto Sans 10";
     show-icons:                     true;
 	icon-theme: 					"Papirus";
+    display-drun: 					"";
+    drun-display-format:            "{name}";
     threads:                        0;
     scroll-method:                  0;
     disable-history:                false;
@@ -19,96 +21,114 @@ configuration {
 	sidebar-mode: 					false;
 }
 
-/* -- Classical -- */
+/* -- Light -- */
 * {
-    background:                     #0D1014;
-    background-color:               #0D1014;
-    background-entry:               #00000033;
-    background-alt:                 #10151D;
-    foreground:                     #AE4D3D;
-    foreground-selected:            #0492AA;
-    urgent:                         #E91E6366;
-    urgent-selected:                #E91E6377;
+    background:                    #0D1014;
+    background-alt:                #0D1014;
+    background-ib:                  #FFFFFFFF;
+    foreground:                     #000000A6;
+    border:               			#0D1014;
+    border-sel:               		#10151D;
+    selected:               		#10151D;
+    urgent:                         #DA4453FF;
 }
 
-
+/* -- Dark -- */
+/*
+* {
+    background:                     #212121ff;
+    background-alt:                 #212121ff;
+    background-ib:                  #151515FF;
+    foreground:                     #EDEDEDFF;
+    border:               			#EDEDED4d;
+    border-sel:               		#1A73E9FF;
+    selected:               		#151515ff;
+    urgent:                         #DA4453FF;
+}
+*/
 
 window {
-    transparency:                   "false";
+    transparency:                   "real";
     background-color:               @background;
     text-color:                     @foreground;
-    border-radius:                  15px;
-    height:                         30%;
-    width:                          30%;
-    location:                       center;
-    anchor:                         center;
-    x-offset:                       0;
+    border:                  		3px;
+    border-radius:                  20px;
+    border-color:                  	@border;
+    height:                         20%;
+    width:                          40%;
+    location:                       east;
+    anchor:                         east;
+    x-offset:                       15;
     y-offset:                       0;
 }
 
 prompt {
     enabled: 						false;
 	padding: 						0px 8px 0px 4px;
-	background-color: 				@background;
+	background-color: 				@background-ib;
 	text-color: 					@foreground;
-	font:							"FantasqueSansMono Nerd Font 0";
+	font:							"FantasqueSansMono Nerd Font 20";
 }
 
+
 inputbar {
-    background-color:               @background;
-    text-color:                     @background;
+    background-color:               @background-ib;
+    text-color:                     @foreground;
     expand:                         false;
-    border-radius:                  10px;
-    margin:                         0px 0px 0px 0px;
+    border:                  		0px 0px 2px 0px;
+    border-radius:                  24px;
+    border-color:                  	@border;
+    margin:                         5px 0px 0px 0px;
     padding:                        5px 5px 5px 5px;
     position:                       center;
 }
 
-
 entry {
-    background-color:               @background;
+    background-color:               @background-ib;
     text-color:                     @foreground;
     placeholder-color:              @foreground;
-    expand:                         false;
-    horizontal-align:               0.0;
-    placeholder:                    " ";
-    blink:                          false;
+    expand:                         true;
+    horizontal-align:               0.5;
+    padding:                        3px 0px 3px 0px;
+    placeholder:                    "Search";
+    blink:                          true;
 }
 
 case-indicator {
-    background-color:               @background;
-    text-color:                     @background;
-    spacing:                        6;
+    background-color:               @background-ib;
+    text-color:                     @foreground;
+    spacing:                        0;
 }
 
 
 listview {
     background-color:               @background;
-    columns:                       4;
+    columns:                        4;
     spacing:                        4px;
-    cycle:                          true;
+    cycle:                          false;
     dynamic:                        true;
     layout:                         vertical;
 }
 
 mainbox {
-    background-color:               @background-color;
+    background-color:               @background;
     children:                       [  listview ];
-    spacing:                        30px;
-    padding:                        10px 10px 10px 10px;
+    spacing:                       	12px;
+    padding:                        8px 12px 8px 12px;
 }
 
 element {
     background-color:               @background;
     text-color:                     @foreground;
     orientation:                    vertical;
-    border-radius:                  15px;
-    padding:                        30px 0px 30px 0px;
+    border-radius:                  0px;
+    margin:                         0px 0px 0px 0px;
+    padding:                        10px 0px 10px 0px;
 }
 
 element-icon {
-    size:                           86px;
-    border:                         5px;
+    size:                           74px;
+    border:                         0px;
 }
 
 element-text {
@@ -122,7 +142,7 @@ element normal.urgent,
 element alternate.urgent {
     background-color:               @urgent;
     text-color:                     @foreground;
-    border-radius:                  15px;
+    border-radius:                  9px;
 }
 
 element normal.active,
@@ -132,17 +152,19 @@ element alternate.active {
 }
 
 element selected {
-    background-color:               @background-alt;
-    text-color:                     @foreground-selected;
+    background-color:               @selected;
+    text-color:                     @foreground;
+    border:                  		0px 0px 2px 0px;
+    border-radius:                  4px;
+    border-color:                  	@border-sel;
 }
 
 element selected.urgent {
-    background-color:               @urgent-selected;
+    background-color:               @urgent;
     text-color:                     @foreground;
 }
 
 element selected.active {
     background-color:               @background-alt;
-    color:                          @foreground-selected;
+    color:                          @foreground;
 }
-
