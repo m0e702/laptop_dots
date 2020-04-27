@@ -30,10 +30,10 @@ margin-bottom     = 0
 
 
 [bar/main]
-monitor = VGA1 
+monitor = eDP1 
 monitor-fallback = DP-2
 width    = 100%
-height   = 43
+height   = 40
 offset-x = 0
 offset-y = 0 
 line-size = 0
@@ -46,28 +46,27 @@ fixed-center = true
 
 
 
-background = #131A21
-foreground = #C7563D
-border-color = #131A21
-fg-colour = #FFFFFF
-font-1 = kane890:size=32;7
-font-4 = kane890:size=27;4 
+background = #282C34
+foreground = #E6E6E6
+border-color = #282C34
+font-1 = kane890:size=27;7
+font-4 = kane890:size=20;4 
 font-2 = kanem:size=29;6
-font-0 = "iosevka custom:style=bold:size=12;5" 
-font-3 = "iosevka custom:style=bold:size=12;5" 
+font-0 = "iosevka custom:style=bold:size=10;7" 
+font-3 = "iosevka custom:style=bold:size=10;7" 
  
 modules-left   =    custom1 i3   
 modules-center =   date time
-modules-right  =  volume git  
+modules-right  =   volume battery
 
-border-size = 2
+border-size = 1
 padding-left        = 0
 padding-right       = 0
 module-margin-left  = 0
 module-margin-right = 0
 module-margin-center = 0
 
-bottom = false
+bottom = true
 
 [module/network]
 type          = internal/network
@@ -80,7 +79,7 @@ interval = 5
 format = "%{F#6D6D6D}%{F-} <label>"
 format-fg-colour = #D7424F
 label = %percentage_used%% 
-format-padding           = 1
+format-padding  = 1
 
 
  
@@ -89,8 +88,8 @@ type                     = internal/date
 interval                 = 30
 date                     = %H:%M
  format-prefix            = 
-format-prefix-foreground = #2A3340
-format-foreground = #3B4252
+format-prefix-foreground = 
+format-foreground = #E5C07B
 format-padding   = 1
  
 [module/date]
@@ -99,7 +98,7 @@ interval = 30
 label =  %time%
 time =  %A, %d %B %
 format-padding   = 1
-format-foreground = #81A1C1
+format-foreground = #FFFFFF
   
 [module/browser]
 type = custom/text
@@ -118,18 +117,18 @@ content-padding = 0
  
 [module/mail]
 type = custom/text
-content = 
-content-padding = 
+content =  Online
+content-padding = 1
 content-foreground =  #606060
-click-left = ./launcher.sh
-line-size = 4 
+click-left = 
+line-size =  
 
  
 [module/git]
 type = custom/text
 content = 
-content-margin = 4
-content-foreground = A6B8B6
+content-margin = 0
+content-foreground = #98C379
 click-left = xdg-open https://github.com/m0e702
  
 [module/title]
@@ -251,9 +250,9 @@ bar-volume-indicator =
 bar-volume-indicator-foreground = #404645
 bar-volume-fill = █
 
-bar-volume-fill-foreground = #03A9C5
+bar-volume-fill-foreground = #61AFEF
 bar-volume-empty = █
-bar-volume-empty-foreground = #A6B8B6
+bar-volume-empty-foreground = #5C6370
 
 ramp-volume-0 =  
 ramp-volume-1 =   
@@ -273,15 +272,15 @@ content-foreground = #606060
 
 [module/firefox]
 type = custom/text
-content = 
+content = 
 content-padding = 4
 content-foreground = N#aaC5C9CC
 
 [module/custom1]
 type = custom/text
-content = 
+content = 
 content-padding = 0
-content-foreground = #03A9C5
+content-foreground = #E5C07B
 click-left = rofi -show drun 
 click-right = rofi -show drun -theme sidetab.rasi
  
@@ -307,35 +306,125 @@ format-disconnected-padding  = 2
 ; format-disconnected-prefix-foreground  = ${colors.cyn}
 
 [module/battery]
-type          = internal/battery
-full-at       = 98
-battery       = BAT1
-adapter       = AC0
-poll-interval = 5
+type = internal/battery
 
-format-charging-prefix      = ""
-format-discharging-prefix   = ""
-format-full-prefix          = ""
+full-at = 99
 
-label-charging      = " %percentage%% "
-label-discharging   = " %percentage%% "
-label-full          = " %percentage%% "
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT1
+adapter = ACAD
 
-format-charging-padding = 1
-format-discharging-padding = 3
-format-full-padding    = 1
+; Disable polling by setting the interval to 0.
+; Default: 5
+poll-interval = 2
 
-format-charging-background      = #1F1F1F
-format-discharging-background   = #1F1F1F
-format-full-background          = #1F1F1F
-format-charging-foreground      = #6D6D6D
-format-discharging-foreground   = #FFFFFF
-format-full-foreground          = #4cbdfc
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
 
-format-charging-prefix-foreground = #a2a1c7
- format-discharging-prefix-foreground = #064E71
-; format-full-prefix-foreground    = ${colors.red
+; Available tags:
+;   <label-charging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-charging>
+format-charging =<animation-charging>  <label-charging>   <bar-capacity>
+format-charging-background = 
+;;format-charging-prefix = 
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <ramp-capacity>  <label-discharging>   <bar-capacity> 
+format-discharging-background = 
+format-discharging-padding = 1
 
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-full = <ramp-capacity> <label-full>
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+
+label-charging = 
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = 
+
+; Available tokens:
+;   %percentage% (default)
+label-full = Fully Charged
+label-full-background = 
+label-full-foreground = #a84e32
+label-full-padding = 1
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = #454A54
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = #F2FF25
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <bar-capacity> is used
+bar-capacity-width = 10
+bar-capacity-gradient = false
+bar-capacity-format = %{T4}%fill%%empty%%{F-}%{T-}
+; bar-capacity-fill = █
+; bar-capacity-fill = █
+bar-capacity-fill = █
+bar-capacity-fill-foreground = #a8328d
+bar-capacity-fill-font = 1
+; bar-capacity-empty = █
+; bar-capacity-empty = █
+bar-capacity-empty = █
+bar-capacity-empty-font = 1
+bar-capacity-empty-foreground = #454A54
+
+bar-capacity-foreground-0 = #282C34
+bar-capacity-foreground-1 = #5C6370
+bar-capacity-foreground-2 = #5C6370
+bar-capacity-foreground-3 = #E5C07B
+bar-capacity-foreground-4 = #D7424F
+bar-capacity-foreground-5 = #D7424F
+bar-capacity-foreground-6 = #D7424F
+bar-capacity-foreground-7 = #D7424F
+bar-capacity-foreground-8 = #D7424F
+bar-capacity-foreground-9 = #D7424F
+
+; Only applies if <animation-charging> is used
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground= #a8328d
+
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+;;animation-discharging-0 = 
+;;animation-discharging-1 = 
+;;animation-discharging-2 = 
+;;animation-discharging-3 = 
+;;animation-discharging-4 = 
+;;animation-discharging-5 = 
+;;animation-discharging-6 = 
+;;animation-discharging-7 = 
+;;animation-discharging-8 = 
+
+; Framerate in milliseconds
+;animation-discharging-framerate = 500
 [module/bell]
 type = custom/text
 content = 
@@ -408,7 +497,7 @@ bar-volume-indicator =
 bar-volume-indicator-foreground = #404645
 bar-volume-fill = █
 
-bar-volume-fill-foreground = #61afef
+bar-volume-fill-foreground = #7CAFC2
 bar-volume-empty = █
 bar-volume-empty-foreground = #5C6370
 
