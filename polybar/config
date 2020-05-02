@@ -1,3 +1,4 @@
+
 , 
 ;             _       _                                   __ _       
 ; _ __   ___ | |_   _| |__   __ _ _ __    ___ ___  _ __  / _(_) __ _ 
@@ -46,9 +47,9 @@ fixed-center = true
 
 
 
-background = #282C34
+background = #1C1E26
 foreground = #E6E6E6
-border-color = #282C34
+border-color = #1C1E26
 font-1 = kane890:size=27;7
 font-4 = kane890:size=20;4 
 font-2 = kanem:size=29;6
@@ -278,9 +279,9 @@ content-foreground = N#aaC5C9CC
 
 [module/custom1]
 type = custom/text
-content = 
+content = 
 content-padding = 0
-content-foreground = #E5C07B
+content-foreground = #862D40
 click-left = rofi -show drun 
 click-right = rofi -show drun -theme sidetab.rasi
  
@@ -331,7 +332,7 @@ time-format = %H:%M
 ;   <animation-charging>
 format-charging =<animation-charging>  <label-charging>   <bar-capacity>
 format-charging-background = 
-;;format-charging-prefix = 
+format-charging-prefix = 
 ; Available tags:
 ;   <label-discharging> (default)
 ;   <bar-capacity>
@@ -357,8 +358,7 @@ label-charging =
 ;   %percentage% (default)
 ;   %time%
 ;   %consumption% (shows current discharge rate in watts)
-label-discharging = 
-
+label-discharging = 
 ; Available tokens:
 ;   %percentage% (default)
 label-full = Fully Charged
